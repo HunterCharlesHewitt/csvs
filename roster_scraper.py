@@ -320,8 +320,7 @@ def extract_player_info(row):
         player_info['id'] = href.split('/')[2]
     player_info['name'] = row.find('div', class_='player-name').text.strip()
     player_info['overall'] = row.find('div', class_='player-overall').text.strip()
-    # player_info['team'] = row.find('div', class_='mb-1').find('img').get('data-original-title')
-    player_info['team'] = ""
+    player_info['team'] = row.find('div', class_='mb-1').find('img').get('data-original-title')
     position_div = row.find('div', class_='player-position-cln')
     player_info['position'] = position_div.text.split('|')[0].strip() if position_div else None
     if "," in player_info['position']:
@@ -333,9 +332,9 @@ def extract_player_info(row):
     return player_info
 
 
-url = "https://www.fifacm.com/players?page=1&player_rating=81-99&real_face=1&nations=54&sort=overallrating&order=desc"
-if __name__ == "__main__":
-# def scrape(url):
+# url = "https://www.fifacm.com/players?page=1&nations=112&&eLeagues=1003,1014"
+# if __name__ == "__main__":
+def scrape(url):
     webdriver_path = 'C:/Users/Hunte/chromedriver.exe'  # Update this to the correct path
 
     service = Service(webdriver_path)
@@ -358,8 +357,8 @@ if __name__ == "__main__":
         players.append(player_info)
     ret_players = []
     for player in players:
-        str = f"{player['id']}, {player['name']}, {player['overall']}, {player['position']}, {player['team']}, {player['img_url']}"
+        str = f"{player['id']}, {player['name']}, {player['overall']}, {player['position']}, {player['team']}, {player['img_url']}\n"
         print(str)
         ret_players.append(str)
 
-    # return ret_players
+    return ret_players
