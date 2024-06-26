@@ -75,7 +75,7 @@ teams = [
     "Ghana",
     "Cape Verde",
     "Albania",
-    "Spain c team",
+    "Spain B team",
     "Germany c team",
     "Burkina Faso",
     "Iceland",
@@ -332,9 +332,9 @@ def extract_player_info(row):
     return player_info
 
 
-# url = "https://www.fifacm.com/players?page=1&nations=112&&eLeagues=1003,1014"
-# if __name__ == "__main__":
-def scrape(url):
+url = "https://www.fifacm.com/players?page=1&nations=46&&player_age=15-18&eLeagues=1003,1014"
+if __name__ == "__main__":
+# def scrape(url):
     webdriver_path = 'C:/Users/Hunte/chromedriver.exe'  # Update this to the correct path
 
     service = Service(webdriver_path)
@@ -357,8 +357,8 @@ def scrape(url):
         players.append(player_info)
     ret_players = []
     for player in players:
-        str = f"{player['id']}, {player['name']}, {player['overall']}, {player['position']}, {player['team']}, {player['img_url']}\n"
+        str = f"{player['id']}, {player['name']}, {player['overall']}, {player['position']}, {player['team']}, {player['img_url']}"
         print(str)
         ret_players.append(str)
 
-    return ret_players
+    # return ret_players
